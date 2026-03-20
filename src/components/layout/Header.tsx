@@ -52,6 +52,8 @@ export function Header() {
           <li>
             <a
               href={personalInfo.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 text-sm border border-indigo-500/50 text-indigo-400 rounded-lg hover:bg-indigo-500/10 transition-all"
             >
               {t(ui.resume, locale)}

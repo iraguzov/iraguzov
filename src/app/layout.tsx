@@ -9,6 +9,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   title: "Ilya Raguzov | QA Automation Engineer",
   description:
     "Senior QA Automation Engineer — building robust test frameworks, CI/CD pipelines, and quality-first engineering culture.",
