@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
+import Image from "next/image";
 import { personalInfo, ui, t } from "@/data/siteData";
 import { useI18n } from "@/lib/i18n";
 import { TerminalAnimation } from "./TerminalAnimation";
@@ -11,81 +12,111 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 grid-pattern">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* Left: Text content */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+      <div className="max-w-6xl mx-auto w-full">
+        {/* Top row: Photo + Text */}
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left: Text content */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-400 text-sm mb-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            {t(ui.available, locale)}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-400 text-sm mb-6"
+            >
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              {t(ui.available, locale)}
+            </motion.div>
+
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+              {locale === "ru" ? "Привет, я " : "Hi, I'm "}
+              <span className="gradient-text">
+                {locale === "ru" ? personalInfo.nameRu : personalInfo.name}
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-2">
+              {t(personalInfo.title, locale)}
+            </p>
+
+            <p className="text-[var(--text-secondary)] text-lg mb-8 max-w-lg">
+              {t(personalInfo.tagline, locale)}
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Button
+                as="a"
+                href="#contact"
+                color="primary"
+                size="lg"
+                className="bg-indigo-600 hover:bg-indigo-500 font-semibold glow"
+              >
+                {t(ui.getInTouch, locale)}
+              </Button>
+              <Button
+                as="a"
+                href="#projects"
+                variant="bordered"
+                size="lg"
+                className="border-indigo-500/50 text-indigo-400 hover:bg-indigo-500/10"
+              >
+                {t(ui.viewProjects, locale)}
+              </Button>
+            </div>
+
+            {/* Social links */}
+            <div className="flex gap-4 mt-8">
+              {Object.entries(personalInfo.social).map(([platform, url]) => (
+                <a
+                  key={platform}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all"
+                  aria-label={platform}
+                >
+                  <SocialIcon platform={platform} />
+                </a>
+              ))}
+            </div>
           </motion.div>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            {locale === "ru" ? "Привет, я " : "Hi, I'm "}
-            <span className="gradient-text">
-              {locale === "ru" ? personalInfo.nameRu : personalInfo.name}
-            </span>
-          </h1>
+          {/* Right: Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center"
+          >
+            <div className="relative">
+              {/* Glow behind photo */}
+              <div className="absolute inset-0 bg-indigo-500/20 rounded-full blur-3xl scale-75" />
+              <div className="absolute -inset-1 bg-gradient-to-b from-indigo-500/30 via-purple-500/20 to-transparent rounded-3xl blur-2xl" />
+              {/* Photo */}
+              <div className="relative rounded-3xl overflow-hidden border border-white/10">
+                <Image
+                  src="/photo.png"
+                  alt={personalInfo.name}
+                  width={400}
+                  height={500}
+                  className="object-cover object-top"
+                  style={{ maxHeight: "500px", width: "auto" }}
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
-          <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-2">
-            {t(personalInfo.title, locale)}
-          </p>
-
-          <p className="text-[var(--text-secondary)] text-lg mb-8 max-w-lg">
-            {t(personalInfo.tagline, locale)}
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <Button
-              as="a"
-              href="#contact"
-              color="primary"
-              size="lg"
-              className="bg-indigo-600 hover:bg-indigo-500 font-semibold glow"
-            >
-              {t(ui.getInTouch, locale)}
-            </Button>
-            <Button
-              as="a"
-              href="#projects"
-              variant="bordered"
-              size="lg"
-              className="border-indigo-500/50 text-indigo-400 hover:bg-indigo-500/10"
-            >
-              {t(ui.viewProjects, locale)}
-            </Button>
-          </div>
-
-          {/* Social links */}
-          <div className="flex gap-4 mt-8">
-            {Object.entries(personalInfo.social).map(([platform, url]) => (
-              <a
-                key={platform}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:text-white hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all"
-                aria-label={platform}
-              >
-                <SocialIcon platform={platform} />
-              </a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Right: Terminal animation */}
+        {/* Terminal below */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-16 max-w-3xl mx-auto"
         >
           <TerminalAnimation />
         </motion.div>
@@ -95,7 +126,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

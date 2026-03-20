@@ -31,7 +31,7 @@ export const personalInfo = {
   social: {
     github: "https://github.com/iraguzov",
     linkedin: "https://www.linkedin.com/in/raguzov-ilya",
-    telegram: "https://t.me/iraguzov",
+    telegram: "https://t.me/WhiteJoint",
   },
 };
 
