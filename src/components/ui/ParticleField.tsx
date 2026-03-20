@@ -20,7 +20,15 @@ export function ParticleField() {
       vy: number;
       size: number;
       opacity: number;
+      color: string;
     }> = [];
+
+    const colors = [
+      "79, 70, 229",   // indigo
+      "124, 58, 237",  // violet
+      "219, 39, 119",  // pink
+      "16, 185, 129",  // emerald
+    ];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -28,14 +36,15 @@ export function ParticleField() {
     };
 
     const createParticles = () => {
-      const count = Math.floor((canvas.width * canvas.height) / 15000);
+      const count = Math.floor((canvas.width * canvas.height) / 20000);
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        size: Math.random() * 2.5 + 1,
+        opacity: Math.random() * 0.12 + 0.04,
+        color: colors[Math.floor(Math.random() * colors.length)],
       }));
     };
 
@@ -53,20 +62,19 @@ export function ParticleField() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+        ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
         ctx.fill();
 
-        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const dx = p.x - particles[j].x;
           const dy = p.y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
+          if (dist < 100) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.05 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(79, 70, 229, ${0.04 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

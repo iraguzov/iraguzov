@@ -9,7 +9,7 @@ export function Skills() {
   const { locale } = useI18n();
 
   return (
-    <section id="skills" className="relative py-32 px-6">
+    <section id="skills" className="relative py-32 px-6 bg-zinc-50/60">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           title={t(sectionHeadings.skills.title, locale)}
@@ -24,11 +24,13 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-              className="glass rounded-xl p-6 hover:border-indigo-500/30 transition-all group"
+              className="bg-white rounded-2xl p-6 border border-zinc-200 hover:border-indigo-300 hover:shadow-lg transition-all group"
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{category.icon}</span>
-                <h3 className="text-lg font-semibold text-white">
+                <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-xl">
+                  {category.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-zinc-900">
                   {t(category.name, locale)}
                 </h3>
               </div>
@@ -37,7 +39,7 @@ export function Skills() {
                 {category.items.map((skill) => (
                   <span
                     key={skill.name}
-                    className="px-3 py-1.5 text-sm text-[var(--text-secondary)] bg-[var(--surface-light)] rounded-lg border border-[var(--border)] hover:text-indigo-400 hover:border-indigo-500/30 transition-colors"
+                    className="px-3 py-1.5 text-sm text-zinc-600 bg-zinc-100 rounded-lg border border-zinc-200 hover:text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-colors"
                   >
                     {skill.name}
                   </span>

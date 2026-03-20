@@ -25,7 +25,7 @@ export function About() {
             className="space-y-6"
           >
             {aboutText.paragraphs.map((p, i) => (
-              <p key={i} className="text-[var(--text-secondary)] leading-relaxed text-lg">
+              <p key={i} className="text-zinc-600 leading-relaxed text-lg">
                 {t(p, locale)}
               </p>
             ))}
@@ -45,12 +45,12 @@ export function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className="glass rounded-xl p-6 text-center hover:border-indigo-500/30 transition-colors group"
+                className="bg-white rounded-2xl p-6 text-center border border-zinc-200 hover:border-indigo-300 hover:shadow-lg transition-all group"
               >
                 <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">
                   {stat.value}
                 </div>
-                <div className="text-sm text-[var(--text-secondary)]">
+                <div className="text-sm text-zinc-500">
                   {t(stat.label, locale)}
                 </div>
               </motion.div>
