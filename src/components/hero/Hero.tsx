@@ -19,15 +19,18 @@ export function Hero() {
         transition={{ duration: 1.5, delay: 0.5 }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden"
       >
-        <Image
-          src="/hero-bg.png"
-          alt=""
-          width={420}
-          height={900}
-          className="object-contain max-h-[88vh]"
-          priority
-          aria-hidden="true"
-        />
+        <div className="relative">
+          <Image
+            src="/hero-bg.png"
+            alt=""
+            width={420}
+            height={900}
+            className="object-contain max-h-[88vh]"
+            priority
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
+        </div>
       </motion.div>
 
       <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
