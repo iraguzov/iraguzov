@@ -3,19 +3,21 @@
 import { motion } from "framer-motion";
 import { Button, Input, Textarea } from "@heroui/react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { personalInfo } from "@/data/siteData";
+import { personalInfo, sectionHeadings, ui, t } from "@/data/siteData";
+import { useI18n } from "@/lib/i18n";
 
 export function Contact() {
+  const { locale } = useI18n();
+
   return (
     <section id="contact" className="relative py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <SectionHeading
-          title="Get in Touch"
-          subtitle="Interested in working together? Let's connect"
+          title={t(sectionHeadings.contact.title, locale)}
+          subtitle={t(sectionHeadings.contact.subtitle, locale)}
         />
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -24,8 +26,7 @@ export function Contact() {
             className="space-y-6"
           >
             <p className="text-[var(--text-secondary)] text-lg leading-relaxed">
-              I&apos;m always open to discussing new projects, creative ideas, or
-              opportunities to be part of your team.
+              {t(ui.contactText, locale)}
             </p>
 
             <div className="space-y-4">
@@ -71,7 +72,6 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact form */}
           <motion.form
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -81,7 +81,7 @@ export function Contact() {
             onSubmit={(e) => e.preventDefault()}
           >
             <Input
-              label="Name"
+              label={t(ui.name, locale)}
               variant="bordered"
               classNames={{
                 inputWrapper: "border-[var(--border)] hover:border-indigo-500/50 bg-transparent",
@@ -89,7 +89,7 @@ export function Contact() {
               }}
             />
             <Input
-              label="Email"
+              label={t(ui.emailLabel, locale)}
               type="email"
               variant="bordered"
               classNames={{
@@ -98,7 +98,7 @@ export function Contact() {
               }}
             />
             <Textarea
-              label="Message"
+              label={t(ui.message, locale)}
               variant="bordered"
               minRows={4}
               classNames={{
@@ -112,7 +112,7 @@ export function Contact() {
               size="lg"
               className="w-full bg-indigo-600 hover:bg-indigo-500 font-semibold"
             >
-              Send Message
+              {t(ui.sendMessage, locale)}
             </Button>
           </motion.form>
         </div>

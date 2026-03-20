@@ -2,19 +2,21 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { aboutText } from "@/data/siteData";
+import { aboutText, sectionHeadings, t } from "@/data/siteData";
+import { useI18n } from "@/lib/i18n";
 
 export function About() {
+  const { locale } = useI18n();
+
   return (
     <section id="about" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
-          title="About Me"
-          subtitle="Quality is not an act, it's a habit"
+          title={t(sectionHeadings.about.title, locale)}
+          subtitle={t(sectionHeadings.about.subtitle, locale)}
         />
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -24,12 +26,11 @@ export function About() {
           >
             {aboutText.paragraphs.map((p, i) => (
               <p key={i} className="text-[var(--text-secondary)] leading-relaxed text-lg">
-                {p}
+                {t(p, locale)}
               </p>
             ))}
           </motion.div>
 
-          {/* Stats grid */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +40,7 @@ export function About() {
           >
             {aboutText.stats.map((stat, i) => (
               <motion.div
-                key={stat.label}
+                key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -50,7 +51,7 @@ export function About() {
                   {stat.value}
                 </div>
                 <div className="text-sm text-[var(--text-secondary)]">
-                  {stat.label}
+                  {t(stat.label, locale)}
                 </div>
               </motion.div>
             ))}

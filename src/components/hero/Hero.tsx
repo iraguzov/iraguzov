@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
-import { personalInfo } from "@/data/siteData";
+import { personalInfo, ui, t } from "@/data/siteData";
+import { useI18n } from "@/lib/i18n";
 import { TerminalAnimation } from "./TerminalAnimation";
 
 export function Hero() {
+  const { locale } = useI18n();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 grid-pattern">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -22,20 +25,22 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/5 text-indigo-400 text-sm mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            Available for opportunities
+            {t(ui.available, locale)}
           </motion.div>
 
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            Hi, I&apos;m{" "}
-            <span className="gradient-text">{personalInfo.name}</span>
+            {locale === "ru" ? "Привет, я " : "Hi, I'm "}
+            <span className="gradient-text">
+              {locale === "ru" ? personalInfo.nameRu : personalInfo.name}
+            </span>
           </h1>
 
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-2">
-            {personalInfo.title}
+            {t(personalInfo.title, locale)}
           </p>
 
           <p className="text-[var(--text-secondary)] text-lg mb-8 max-w-lg">
-            {personalInfo.tagline}
+            {t(personalInfo.tagline, locale)}
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -46,7 +51,7 @@ export function Hero() {
               size="lg"
               className="bg-indigo-600 hover:bg-indigo-500 font-semibold glow"
             >
-              Get in Touch
+              {t(ui.getInTouch, locale)}
             </Button>
             <Button
               as="a"
@@ -55,7 +60,7 @@ export function Hero() {
               size="lg"
               className="border-indigo-500/50 text-indigo-400 hover:bg-indigo-500/10"
             >
-              View Projects
+              {t(ui.viewProjects, locale)}
             </Button>
           </div>
 

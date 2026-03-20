@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navItems, personalInfo } from "@/data/siteData";
+import { navItems, personalInfo, ui, t } from "@/data/siteData";
+import { useI18n, type Locale } from "@/lib/i18n";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { locale, setLocale } = useI18n();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -42,7 +44,7 @@ export function Header() {
                 href={item.href}
                 className="text-sm text-[var(--text-secondary)] hover:text-white transition-colors relative group"
               >
-                {item.label}
+                {t(item.label, locale)}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-500 group-hover:w-full transition-all duration-300" />
               </a>
             </li>
@@ -52,33 +54,50 @@ export function Header() {
               href={personalInfo.resumeUrl}
               className="px-4 py-2 text-sm border border-indigo-500/50 text-indigo-400 rounded-lg hover:bg-indigo-500/10 transition-all"
             >
-              Resume
+              {t(ui.resume, locale)}
             </a>
+          </li>
+          {/* Language switcher */}
+          <li>
+            <button
+              onClick={() => setLocale(locale === "ru" ? "en" : "ru")}
+              className="px-3 py-1.5 text-xs font-medium border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-white hover:border-indigo-500/50 transition-all uppercase tracking-wider"
+            >
+              {locale === "ru" ? "EN" : "RU"}
+            </button>
           </li>
         </ul>
 
         {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all ${
-              mobileOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all ${
-              mobileOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={() => setLocale(locale === "ru" ? "en" : "ru")}
+            className="px-2 py-1 text-xs font-medium border border-[var(--border)] rounded-lg text-[var(--text-secondary)] uppercase"
+          >
+            {locale === "ru" ? "EN" : "RU"}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="flex flex-col gap-1.5 p-2"
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all ${
+                mobileOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-0.5 bg-white transition-all ${
+                mobileOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -98,7 +117,7 @@ export function Header() {
                     onClick={() => setMobileOpen(false)}
                     className="text-[var(--text-secondary)] hover:text-white transition-colors"
                   >
-                    {item.label}
+                    {t(item.label, locale)}
                   </a>
                 </li>
               ))}
