@@ -4,47 +4,47 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const lines = [
-  { prompt: "~$", text: "playwright test --reporter=allure", delay: 0 },
+  { prompt: "~$", text: "pytest --alluredir=allure-results -n 4", delay: 0 },
   {
     prompt: "",
-    text: "Running 247 tests using 4 workers",
+    text: "collecting ... 247 items collected",
     delay: 1200,
     color: "text-zinc-400",
   },
   {
     prompt: "",
-    text: "✓ [chromium] auth.spec.ts — Login flow (1.2s)",
+    text: "✓ test_auth.py::test_login_flow PASSED (1.2s)",
     delay: 1800,
     color: "text-green-400",
   },
   {
     prompt: "",
-    text: "✓ [chromium] api.spec.ts — REST endpoints (0.8s)",
+    text: "✓ test_api.py::test_rest_endpoints PASSED (0.8s)",
     delay: 2200,
     color: "text-green-400",
   },
   {
     prompt: "",
-    text: "✓ [firefox] checkout.spec.ts — Payment (2.1s)",
+    text: "✓ test_checkout.py::test_payment_flow PASSED (2.1s)",
     delay: 2600,
     color: "text-green-400",
   },
   {
     prompt: "",
-    text: "✓ [webkit] dashboard.spec.ts — Analytics (1.5s)",
+    text: "✓ test_mobile.py::test_ios_playback PASSED (1.5s)",
     delay: 3000,
     color: "text-green-400",
   },
   {
     prompt: "",
-    text: "✓ [chromium] perf.spec.ts — Load time < 2s (0.9s)",
+    text: "✓ test_perf.py::test_load_under_2s PASSED (0.9s)",
     delay: 3400,
     color: "text-green-400",
   },
   { prompt: "", text: "", delay: 3800 },
   {
     prompt: "",
-    text: "  247 passed (42s)",
+    text: "  247 passed, 0 failed in 42.3s",
     delay: 4000,
     color: "text-green-400 font-semibold",
   },
@@ -87,7 +87,7 @@ export function TerminalAnimation() {
         <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
         <div className="w-3 h-3 rounded-full bg-green-500/80" />
         <span className="ml-2 text-xs text-zinc-500">
-          terminal — playwright
+          terminal — pytest
         </span>
       </div>
 

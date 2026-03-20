@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@heroui/react": "^2.8.10",
     "@tailwindcss/postcss": "^4.2.2",

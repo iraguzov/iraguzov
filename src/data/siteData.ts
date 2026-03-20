@@ -1,36 +1,33 @@
 // ============================================
 // SITE DATA — Edit content here
 // ============================================
-// This file contains ALL text content for the site.
-// Update values below when real content is provided.
-// ============================================
 
 export const personalInfo = {
   name: "Ilya Raguzov",
-  title: "QA Automation Engineer",
+  title: "SDET | QA Automation Engineer",
   tagline: "Building quality into every line of code",
   description:
-    "Senior QA Automation Engineer with deep expertise in test architecture, CI/CD pipelines, and modern automation frameworks. I don't just find bugs — I engineer systems that prevent them.",
-  email: "hello@iraguzov.com",
-  location: "Remote",
+    "QA Engineer with 7+ years of experience in manual and automated testing of mobile and web applications. I build comprehensive test strategies combining thorough manual techniques with efficient automated solutions.",
+  email: "raguzov.i.a@gmail.com",
+  location: "Moscow, Russia",
   resumeUrl: "/resume.pdf",
   social: {
     github: "https://github.com/iraguzov",
-    linkedin: "https://linkedin.com/in/iraguzov",
+    linkedin: "https://www.linkedin.com/in/raguzov-ilya",
     telegram: "https://t.me/iraguzov",
   },
 };
 
 export const aboutText = {
   paragraphs: [
-    "I'm a QA Automation Engineer who treats testing as a first-class engineering discipline. With years of experience across fintech, e-commerce, and enterprise platforms, I build test infrastructure that scales.",
-    "My approach combines deep technical knowledge with strategic thinking — I design frameworks that catch regressions early, integrate seamlessly into CI/CD, and give teams confidence to ship fast.",
-    "Beyond automation, I'm passionate about quality culture: code reviews, testing best practices, and shifting quality left in the development lifecycle.",
+    "I'm a QA Automation Engineer with 7+ years of hands-on experience in both manual and automated testing of web and mobile applications. I specialize in functional, UI/UX, and cross-browser testing across diverse platforms.",
+    "I design test cases, test plans, and defect tracking workflows, with deep experience in test automation using Appium, Playwright, and Selenium for regression, API, web, and mobile app testing.",
+    "My goal is to ensure the highest software quality through comprehensive testing strategies — combining thorough manual methodologies with efficient automated solutions that integrate seamlessly into CI/CD pipelines.",
   ],
   stats: [
-    { label: "Years Experience", value: "8+" },
-    { label: "Projects Delivered", value: "30+" },
-    { label: "Test Frameworks Built", value: "15+" },
+    { label: "Years Experience", value: "7+" },
+    { label: "Companies", value: "4" },
+    { label: "Platforms Tested", value: "Web & Mobile" },
     { label: "Bugs Prevented", value: "∞" },
   ],
 };
@@ -41,55 +38,64 @@ export const skills = {
       name: "Automation Frameworks",
       icon: "🔧",
       items: [
-        { name: "Playwright", level: 95 },
-        { name: "Selenium", level: 90 },
-        { name: "Cypress", level: 85 },
-        { name: "Appium", level: 80 },
-        { name: "TestCafe", level: 75 },
+        { name: "Playwright", level: 90 },
+        { name: "Appium", level: 90 },
+        { name: "Selenium", level: 85 },
+        { name: "Pytest", level: 90 },
+        { name: "Locust", level: 75 },
       ],
     },
     {
-      name: "Programming Languages",
+      name: "Languages & Scripting",
       icon: "💻",
       items: [
-        { name: "TypeScript", level: 90 },
-        { name: "Python", level: 90 },
-        { name: "Java", level: 85 },
-        { name: "JavaScript", level: 95 },
-        { name: "Kotlin", level: 70 },
+        { name: "Python", level: 95 },
+        { name: "SQL", level: 80 },
+        { name: "Bash", level: 80 },
+        { name: "REST API", level: 90 },
       ],
     },
     {
       name: "CI/CD & DevOps",
       icon: "🚀",
       items: [
-        { name: "GitHub Actions", level: 90 },
+        { name: "GitLab CI/CD", level: 85 },
+        { name: "GitHub Actions", level: 85 },
         { name: "Jenkins", level: 85 },
-        { name: "Docker", level: 85 },
-        { name: "GitLab CI", level: 80 },
-        { name: "Kubernetes", level: 70 },
+        { name: "Docker", level: 80 },
       ],
     },
     {
       name: "Testing Practices",
       icon: "🎯",
       items: [
-        { name: "API Testing", level: 95 },
         { name: "E2E Testing", level: 95 },
-        { name: "Performance Testing", level: 80 },
-        { name: "Security Testing", level: 75 },
-        { name: "Mobile Testing", level: 80 },
+        { name: "API Testing", level: 95 },
+        { name: "Mobile Testing (iOS/Android)", level: 90 },
+        { name: "Performance / Load Testing", level: 80 },
+        { name: "Visual Regression Testing", level: 80 },
       ],
     },
     {
       name: "Tools & Platforms",
       icon: "⚡",
       items: [
-        { name: "Allure Report", level: 90 },
-        { name: "Postman / Newman", level: 90 },
-        { name: "Grafana / k6", level: 80 },
-        { name: "Jira / TestRail", level: 90 },
+        { name: "Jira / Confluence", level: 95 },
+        { name: "Charles Proxy", level: 85 },
         { name: "BrowserStack", level: 85 },
+        { name: "Allure / ReportPortal", level: 90 },
+        { name: "Postman", level: 90 },
+      ],
+    },
+    {
+      name: "Methodologies",
+      icon: "📋",
+      items: [
+        { name: "Agile / Scrum", level: 95 },
+        { name: "Kanban", level: 85 },
+        { name: "SDLC / Waterfall", level: 80 },
+        { name: "Test Plans & Strategies", level: 90 },
+        { name: "White-box Testing", level: 75 },
       ],
     },
   ],
@@ -97,55 +103,110 @@ export const skills = {
 
 export const experience = [
   {
-    company: "Company Name",
-    role: "Senior QA Automation Engineer",
-    period: "2022 — Present",
-    description:
-      "Leading test automation strategy across multiple product teams. Designed and implemented a comprehensive E2E testing framework with Playwright, reducing regression testing time by 70%.",
-    highlights: [
-      "Built custom test reporting dashboard",
-      "Implemented parallel test execution in CI/CD",
-      "Mentored 5 junior QA engineers",
-      "Reduced bug escape rate by 40%",
-    ],
-    tech: ["Playwright", "TypeScript", "GitHub Actions", "Docker", "Allure"],
-  },
-  {
-    company: "Company Name",
+    company: "Data-Driven Lab",
     role: "QA Automation Engineer",
-    period: "2019 — 2022",
+    period: "Jun 2025 — Present",
     description:
-      "Developed and maintained automation test suites for a high-traffic e-commerce platform. Introduced API contract testing and visual regression testing.",
+      "Developing and maintaining automated tests for web and mobile applications (iOS, Android) using Python, Pytest, and Appium. Implementing UI and API tests covering key user scenarios.",
     highlights: [
-      "Created API testing framework from scratch",
-      "Set up visual regression testing pipeline",
-      "Automated 500+ test scenarios",
-      "Integrated tests into deployment pipeline",
+      "Set up MCP Playwright server to accelerate automated testing",
+      "Used AI agents to speed up API testing and autotest writing",
+      "Conducted load testing with Locust for performance analysis",
+      "Integrated autotests with GitLab CI/CD and ReportPortal",
+      "Analyzed network traffic with Charles Proxy for debugging",
+      "Managed test scenarios in Test IT, defects in Jira & Confluence",
     ],
-    tech: ["Selenium", "Python", "Jenkins", "REST Assured", "TestRail"],
+    tech: [
+      "Python",
+      "Pytest",
+      "Appium",
+      "Selenium",
+      "Locust",
+      "GitLab CI/CD",
+      "ReportPortal",
+      "Charles Proxy",
+    ],
   },
   {
-    company: "Company Name",
-    role: "QA Engineer",
-    period: "2017 — 2019",
+    company: "Holistiplan",
+    role: "QA Automation Engineer",
+    period: "Oct 2024 — Jun 2025",
     description:
-      "Started as manual QA and transitioned to automation. Built the first automated test suite for the company's core product.",
+      "Manual and automated testing across multiple platforms — functional, regression, integration, UI/UX, and exploratory. Built automated API and UI test suites from scratch.",
     highlights: [
-      "Transitioned team from manual to automated testing",
-      "Built first CI/CD pipeline for tests",
-      "Documented testing best practices",
-      "Introduced BDD approach with Cucumber",
+      "Developed API test suites with Python and Postman (REST validation, schema checks)",
+      "Built UI automation framework with Playwright (Python)",
+      "Dockerized test environments for cross-platform stability",
+      "Integrated tests into CI/CD with GitHub Actions and Jenkins",
+      "Conducted cross-browser/cross-device testing for UI responsiveness",
+      "Used Allure Reports for test result visualization",
+      "Led root cause analysis sessions with developers and POs",
     ],
-    tech: ["Selenium", "Java", "Cucumber", "Maven", "Jira"],
+    tech: [
+      "Python",
+      "Playwright",
+      "Postman",
+      "Docker",
+      "GitHub Actions",
+      "Jenkins",
+      "Allure",
+      "Jira",
+    ],
+  },
+  {
+    company: "The CW Streaming Platform",
+    role: "QA Engineer",
+    period: "Nov 2023 — Sep 2024",
+    description:
+      "End-to-end testing of mobile streaming apps on iOS and Android. Developed automated tests with Appium for playback verification and UI scenarios.",
+    highlights: [
+      "Built Appium (Python) automated tests for iOS and Android",
+      "Created mock data and used Charles Proxy for complex streaming scenarios",
+      "Collaborated with DevOps and Backend teams for API layer validation",
+      "Tested on real devices via BrowserStack and TestFlight",
+    ],
+    tech: [
+      "Appium",
+      "Python",
+      "BrowserStack",
+      "Charles Proxy",
+      "TestFlight",
+      "Firebase",
+      "Jira",
+    ],
+  },
+  {
+    company: "Kinship",
+    role: "QA Engineer",
+    period: "Jan 2018 — Oct 2023",
+    description:
+      "Comprehensive manual and exploratory testing of web and mobile applications. Developed structured test cases and managed regression cycles across releases.",
+    highlights: [
+      "Created and maintained test cases and traceability matrices in Zephyr Scale",
+      "Tracked and managed bugs in Jira across sprint cycles",
+      "Tested on real devices and emulators via BrowserStack and TestFlight",
+      "Led regression testing cycles before and after releases",
+      "Validated RBAC and sensitive data handling scenarios",
+      "Performed smoke and sanity testing on staging, dev, and production",
+    ],
+    tech: [
+      "Zephyr Scale",
+      "Jira",
+      "BrowserStack",
+      "TestRail",
+      "Android Studio",
+      "Xcode",
+      "REST API",
+    ],
   },
 ];
 
 export const projects = [
   {
-    title: "Test Framework Boilerplate",
+    title: "Mobile Test Automation Framework",
     description:
-      "Production-ready Playwright + TypeScript test framework with Page Object pattern, custom reporters, parallel execution, and CI/CD integration.",
-    tech: ["Playwright", "TypeScript", "Allure", "GitHub Actions"],
+      "Production-ready Appium + Python framework for iOS and Android testing with Page Object pattern, parallel execution on BrowserStack, and CI/CD integration.",
+    tech: ["Appium", "Python", "Pytest", "BrowserStack"],
     link: "#",
     github: "#",
     featured: true,
@@ -153,31 +214,38 @@ export const projects = [
   {
     title: "API Testing Suite",
     description:
-      "Comprehensive API testing solution with contract testing, data-driven tests, environment management, and automated Swagger validation.",
-    tech: ["Python", "Pytest", "Requests", "JSON Schema"],
+      "Comprehensive API testing solution with data-driven tests, schema validation, environment management, and automated REST endpoint verification.",
+    tech: ["Python", "Pytest", "Requests", "Postman"],
     link: "#",
     github: "#",
     featured: true,
   },
   {
-    title: "Visual Regression Tool",
+    title: "Playwright Web Automation",
     description:
-      "Custom visual regression testing tool with intelligent diff detection, baseline management, and Slack notifications for UI changes.",
-    tech: ["Playwright", "Sharp", "Node.js", "Docker"],
+      "End-to-end web testing framework with Playwright and Python — cross-browser testing, visual regression, and Allure reporting integrated into CI/CD pipelines.",
+    tech: ["Playwright", "Python", "Allure", "Docker"],
     link: "#",
     github: "#",
     featured: false,
   },
   {
-    title: "QA Dashboard",
+    title: "Load Testing with Locust",
     description:
-      "Real-time test execution dashboard aggregating results from multiple CI pipelines with trend analysis and failure categorization.",
-    tech: ["React", "D3.js", "Node.js", "PostgreSQL"],
+      "Performance and load testing setup using Locust for analyzing system stability under high traffic, with real-time monitoring dashboards and reports.",
+    tech: ["Locust", "Python", "Docker", "Grafana"],
     link: "#",
     github: "#",
     featured: false,
   },
 ];
+
+export const education = {
+  university: "Astrakhan State University",
+  degree: "Engineer's Diploma, Bachelor's",
+  field: "Machines and Apparatus for Food Production",
+  period: "Sep 2008 — Jul 2012",
+};
 
 export const navItems = [
   { label: "About", href: "#about" },
