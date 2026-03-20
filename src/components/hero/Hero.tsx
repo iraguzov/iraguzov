@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
+import Image from "next/image";
 import { personalInfo, ui, t } from "@/data/siteData";
 import { useI18n } from "@/lib/i18n";
 import { TerminalAnimation } from "./TerminalAnimation";
@@ -11,7 +12,25 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 grid-pattern">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      {/* Background photo — centered, behind all content */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.07 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden"
+      >
+        <Image
+          src="/hero-bg.png"
+          alt=""
+          width={466}
+          height={900}
+          className="object-contain max-h-[90vh]"
+          priority
+          aria-hidden="true"
+        />
+      </motion.div>
+
+      <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Left: Text content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
