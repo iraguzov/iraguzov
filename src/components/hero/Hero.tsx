@@ -15,16 +15,16 @@ export function Hero() {
       {/* Background photo — centered, behind all content */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.07 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1.5, delay: 0.5 }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden"
       >
         <Image
           src="/hero-bg.png"
           alt=""
-          width={466}
+          width={420}
           height={900}
-          className="object-contain max-h-[90vh]"
+          className="object-contain max-h-[88vh]"
           priority
           aria-hidden="true"
         />

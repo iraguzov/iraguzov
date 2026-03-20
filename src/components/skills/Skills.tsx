@@ -33,27 +33,14 @@ export function Skills() {
                 </h3>
               </div>
 
-              <div className="space-y-4">
-                {category.items.map((skill, skillIdx) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between text-sm mb-1.5">
-                      <span className="text-[var(--text-secondary)]">{skill.name}</span>
-                      <span className="text-indigo-400">{skill.level}%</span>
-                    </div>
-                    <div className="h-1.5 bg-[var(--surface-light)] rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 1,
-                          delay: catIdx * 0.1 + skillIdx * 0.1,
-                          ease: "easeOut",
-                        }}
-                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
-                      />
-                    </div>
-                  </div>
+              <div className="flex flex-wrap gap-2">
+                {category.items.map((skill) => (
+                  <span
+                    key={skill.name}
+                    className="px-3 py-1.5 text-sm text-[var(--text-secondary)] bg-[var(--surface-light)] rounded-lg border border-[var(--border)] hover:text-indigo-400 hover:border-indigo-500/30 transition-colors"
+                  >
+                    {skill.name}
+                  </span>
                 ))}
               </div>
             </motion.div>
