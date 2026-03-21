@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { BorderBeam } from "@/components/ui/border-beam";
 import { aboutText, sectionHeadings, t } from "@/data/siteData";
 import { useI18n } from "@/lib/i18n";
 
@@ -9,48 +10,51 @@ export function About() {
   const { locale } = useI18n();
 
   return (
-    <section id="about" className="relative py-32 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="relative py-16 md:py-24 px-4 md:px-6">
+      <div className="max-w-5xl mx-auto">
         <SectionHeading
           title={t(sectionHeadings.about.title, locale)}
           subtitle={t(sectionHeadings.about.subtitle, locale)}
         />
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-5 gap-8 md:gap-10 items-start">
+          {/* Text */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            transition={{ duration: 0.5 }}
+            className="md:col-span-3 space-y-5"
           >
             {aboutText.paragraphs.map((p, i) => (
-              <p key={i} className="text-zinc-600 leading-relaxed text-lg">
+              <p key={i} className="text-neutral-500 leading-[1.8] text-[15px]">
                 {t(p, locale)}
               </p>
             ))}
           </motion.div>
 
+          {/* Stats — bento cards with border beam */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="md:col-span-2 grid grid-cols-2 gap-3"
           >
             {aboutText.stats.map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * i }}
-                className="bg-white rounded-2xl p-6 text-center border border-zinc-200 hover:border-indigo-300 hover:shadow-lg transition-all group"
+                className="relative overflow-hidden rounded-2xl border border-neutral-200/60 bg-white p-5 text-center shadow-[0px_1px_1px_rgba(0,0,0,0.03),0px_4px_8px_rgba(0,0,0,0.04)] hover:shadow-[0px_4px_16px_rgba(0,0,0,0.08)] transition-shadow"
               >
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform">
+                {i === 0 && <BorderBeam size={120} duration={10} colorFrom="#3b82f6" colorTo="#06b6d4" />}
+                <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-zinc-500">
+                <div className="text-[11px] text-neutral-400 uppercase tracking-wider font-medium">
                   {t(stat.label, locale)}
                 </div>
               </motion.div>

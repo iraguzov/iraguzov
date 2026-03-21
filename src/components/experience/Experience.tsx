@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Chip } from "@heroui/react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { experience, sectionHeadings, t } from "@/data/siteData";
 import { useI18n } from "@/lib/i18n";
@@ -10,71 +9,86 @@ export function Experience() {
   const { locale } = useI18n();
 
   return (
-    <section id="experience" className="relative py-32 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" className="relative py-16 md:py-24 px-4 md:px-6">
+      <div className="max-w-5xl mx-auto">
         <SectionHeading
           title={t(sectionHeadings.experience.title, locale)}
           subtitle={t(sectionHeadings.experience.subtitle, locale)}
         />
 
         <div className="relative">
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-400 via-violet-400 to-transparent" />
+          {/* Timeline line — center on desktop, left on mobile */}
+          <div className="absolute left-[11px] md:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-blue-400/40 via-neutral-200 to-transparent" />
 
-          {experience.map((exp, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className={`relative flex flex-col md:flex-row gap-8 mb-16 ${
-                i % 2 === 0 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              <div className="absolute left-0 md:left-1/2 w-4 h-4 -translate-x-2 rounded-full bg-white border-[3px] border-indigo-500 shadow-md z-10 mt-7" />
-              <div className="hidden md:block md:w-1/2" />
+          <div className="space-y-6 md:space-y-10">
+            {experience.map((exp, i) => {
+              const isLeft = i % 2 === 0;
 
-              <div className="ml-6 md:ml-0 md:w-1/2 bg-white rounded-2xl p-6 border border-zinc-200 hover:border-indigo-300 hover:shadow-lg transition-all">
-                <div className="inline-flex items-center gap-2 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-full px-3 py-1 mb-3">
-                  {t(exp.period, locale)}
-                </div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-1">
-                  {t(exp.role, locale)}
-                </h3>
-                <p className="text-zinc-500 text-sm mb-4 font-medium">
-                  {exp.company}
-                </p>
-                <p className="text-zinc-500 text-sm mb-4 leading-relaxed">
-                  {t(exp.description, locale)}
-                </p>
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className={`relative group pl-10 md:pl-0 md:flex md:gap-8 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+                >
+                  {/* Dot — left on mobile, center on desktop */}
+                  <div className="absolute left-[5px] md:left-1/2 md:-translate-x-1/2 top-[22px] w-[13px] h-[13px] rounded-full border-2 border-blue-500 bg-white z-10 group-hover:bg-blue-500 transition-colors" />
 
-                <ul className="space-y-2 mb-4">
-                  {exp.highlights.map((h, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-zinc-600">
-                      <span className="text-indigo-500 mt-0.5">▹</span>
-                      {t(h, locale)}
-                    </li>
-                  ))}
-                </ul>
+                  {/* Spacer — half width */}
+                  <div className="hidden md:block md:w-1/2" />
 
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((tech) => (
-                    <Chip
-                      key={tech}
-                      size="sm"
-                      variant="flat"
-                      classNames={{
-                        base: "bg-zinc-100 border border-zinc-200",
-                        content: "text-zinc-600 text-xs font-medium",
-                      }}
-                    >
-                      {tech}
-                    </Chip>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  {/* Card — half width */}
+                  <div className="md:w-1/2">
+                    <div className="rounded-xl border border-neutral-200/60 bg-white p-5 shadow-[0px_1px_1px_rgba(0,0,0,0.03)] hover:shadow-[0px_4px_16px_rgba(0,0,0,0.08)] transition-all relative">
+                      <div className="pointer-events-none absolute inset-0 rounded-xl group-hover:bg-black/[.015] transition-colors" />
+
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-neutral-50 border border-neutral-100 text-[11px] font-medium text-neutral-500">
+                          {t(exp.period, locale)}
+                        </span>
+                        <span className="text-neutral-300">·</span>
+                        <span className="text-xs font-medium text-neutral-400">
+                          {exp.company}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base font-semibold text-neutral-900 mb-2">
+                        {t(exp.role, locale)}
+                      </h3>
+
+                      <p className="text-sm text-neutral-400 mb-3 leading-relaxed">
+                        {t(exp.description, locale)}
+                      </p>
+
+                      <ul className="space-y-1.5 mb-4">
+                        {exp.highlights.map((h, j) => (
+                          <li key={j} className="flex items-start gap-2 text-sm text-neutral-500">
+                            <svg className="w-3 h-3 text-blue-500 mt-[3px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                            {t(h, locale)}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {exp.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-0.5 text-[11px] font-medium text-neutral-400 bg-neutral-50 border border-neutral-100 rounded"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

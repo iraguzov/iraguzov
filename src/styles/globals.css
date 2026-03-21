@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
-  --accent: #4f46e5;
-  --accent-light: #6366f1;
-  --accent-dark: #4338ca;
-  --surface: #ffffff;
-  --surface-light: #f4f4f5;
-  --border: #e4e4e7;
-  --text-secondary: #71717a;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --surface: #f8fafc;
+  --surface-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
 }
 
 @layer base {
@@ -27,67 +29,74 @@
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
-}
-
-/* Soft accent shadow */
-.glow {
-  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.25),
-    0 2px 8px rgba(79, 70, 229, 0.1);
-}
-
-.glow-text {
-  text-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass card — light frosted */
-.glass {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 20px rgba(0, 0, 0, 0.03);
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
-/* Dot pattern background */
-.grid-pattern {
-  background-image: radial-gradient(
-    circle,
-    rgba(79, 70, 229, 0.06) 1px,
-    transparent 1px
-  );
-  background-size: 28px 28px;
+/* === 21st.dev Component Animations === */
+
+/* Floating tag */
+@keyframes tag-float-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
-/* Noise texture overlay */
-.noise::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
+/* BorderBeam */
+@keyframes border-beam {
+  100% { offset-distance: 100%; }
+}
+
+/* ShimmerButton */
+@keyframes shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+@keyframes spin-around {
+  0% { transform: translateZ(0) rotate(0); }
+  15%, 35% { transform: translateZ(0) rotate(90deg); }
+  65%, 85% { transform: translateZ(0) rotate(270deg); }
+  100% { transform: translateZ(0) rotate(360deg); }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
+}
+
+@layer utilities {
+  .animate-border-beam {
+    animation: border-beam calc(var(--duration) * 1s) infinite linear;
+  }
+  .animate-shimmer-slide {
+    animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  }
+  .animate-spin-around {
+    animation: spin-around calc(var(--speed) * 2) infinite linear;
+  }
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration) linear infinite;
+  }
 }

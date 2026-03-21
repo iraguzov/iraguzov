@@ -68,21 +68,31 @@ export const skills = {
       name: l("Фреймворки автоматизации", "Automation Frameworks"),
       icon: "🔧",
       items: [
+        { name: "Python", level: 95 },
         { name: "Playwright", level: 90 },
         { name: "Appium", level: 90 },
         { name: "Selenium", level: 85 },
         { name: "Pytest", level: 90 },
+        { name: "Requests", level: 85 },
         { name: "Locust", level: 75 },
-      ],
-    },
-    {
-      name: l("Языки и скрипты", "Languages & Scripting"),
-      icon: "💻",
-      items: [
-        { name: "Python", level: 95 },
         { name: "SQL", level: 80 },
         { name: "Bash", level: 80 },
         { name: "REST API", level: 90 },
+      ],
+    },
+    {
+      name: l("AI и агенты", "AI & Agents"),
+      icon: "🤖",
+      items: [
+        { name: "Claude Code", level: 90 },
+        { name: "MCP Servers", level: 85 },
+        { name: "Playwright MCP", level: 90 },
+        { name: "GitHub MCP", level: 85 },
+        { name: "Jira MCP", level: 80 },
+        { name: "AI Agents", level: 85 },
+        { name: "Prompt Engineering", level: 85 },
+        { name: "Cursor / Copilot", level: 80 },
+        { name: "LLM Integration", level: 75 },
       ],
     },
     {
@@ -303,7 +313,7 @@ export const sectionHeadings = {
 // ---- UI strings ----
 
 export const ui = {
-  available: l("Открыт к предложениям", "Available for opportunities"),
+  available: l("Open to work", "Open to work"),
   getInTouch: l("Связаться", "Get in Touch"),
   viewProjects: l("Проекты", "View Projects"),
   resume: l("Резюме", "Resume"),
