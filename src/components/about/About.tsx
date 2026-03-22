@@ -17,7 +17,7 @@ export function About() {
           subtitle={t(sectionHeadings.about.subtitle, locale)}
         />
 
-        <div className="grid md:grid-cols-5 gap-8 md:gap-10 items-start">
+        <div className="grid md:grid-cols-5 gap-8 md:gap-10 items-center">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
