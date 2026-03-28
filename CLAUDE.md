@@ -5,12 +5,13 @@ Modern, visually impressive portfolio website for Ilya Raguzov — Senior QA Aut
 Domain: **iraguzov.com**
 
 ## Tech Stack
-- **Framework:** Next.js 16 (App Router)
+- **Framework:** Next.js 16 (App Router, static export)
 - **UI Library:** HeroUI (formerly NextUI)
 - **Styling:** Tailwind CSS v4
 - **Animations:** Framer Motion
 - **Language:** TypeScript
-- **Theme:** Dark-only, indigo/purple accent palette
+- **Theme:** Light theme (redesigned with 21st.dev components)
+- **Analytics:** Yandex Metrika (counter ID: 108282700)
 
 ## Project Structure
 ```
@@ -41,17 +42,27 @@ All text content is centralized in `src/data/siteData.ts`. When updating content
 
 ## Commands
 - `npm run dev` — Start dev server (http://localhost:3000)
-- `npm run build` — Production build
+- `npm run build` — Production build (static export to `out/`)
 - `npm run lint` — ESLint
 
+## Hosting & Deployment
+- **Hosting:** Yandex Object Storage (S3-compatible), bucket `iraguzov.com`
+- **Domain:** iraguzov.com + www.iraguzov.com
+- **SSL:** Yandex Certificate Manager (managed certificate, auto-renew)
+- **Why not Vercel:** Site needs to be accessible from Russia without restrictions
+- **Deploy command:**
+  ```bash
+  npm run build
+  aws --endpoint-url=https://storage.yandexcloud.net s3 sync out/ s3://iraguzov.com/ --delete
+  ```
+- **AWS CLI config:** `~/.aws/credentials` with Yandex service account `sa-creator` static access key
+- **Yandex Cloud:** organization `cloud-ilya-raguzov`, default folder
+
 ## Design Principles
-- Dark theme only, no light mode
-- Glass morphism (`glass` class) for cards
-- Particle field background animation
-- Gradient text (`gradient-text` class) for headings
+- Light theme (redesigned from dark)
 - Smooth scroll-triggered animations via Framer Motion
-- Grid pattern backgrounds (`grid-pattern` class)
 - Mobile-first responsive design
+- 21st.dev components for modern UI patterns
 
 ## MCP Servers
 - **Playwright MCP** — For automated visual verification after code changes
@@ -62,3 +73,4 @@ All text content is centralized in `src/data/siteData.ts`. When updating content
 2. Run `npm run dev` to start the dev server
 3. Use Playwright MCP to open the site and verify changes visually
 4. Fix any issues found during verification
+5. Deploy: `npm run build && aws --endpoint-url=https://storage.yandexcloud.net s3 sync out/ s3://iraguzov.com/ --delete`
