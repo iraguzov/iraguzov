@@ -297,7 +297,6 @@ export const navItems = [
   { label: l("Обо мне", "About"), href: "#about" },
   { label: l("Навыки", "Skills"), href: "#skills" },
   { label: l("Опыт", "Experience"), href: "#experience" },
-  { label: l("Рекомендации", "References"), href: "#recommendations" },
   { label: l("Проекты", "Projects"), href: "#projects" },
   { label: l("Контакты", "Contact"), href: "#contact" },
 ];
