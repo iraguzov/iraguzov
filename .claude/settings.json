@@ -11,6 +11,14 @@
       "env": {
         "TWENTY_FIRST_API_KEY": "${TWENTY_FIRST_API_KEY}"
       }
+    },
+    "linkedin": {
+      "command": "/Users/ilyaraguzov/.local/bin/uvx",
+      "args": ["linkedin-scraper-mcp"]
+    },
+    "hh": {
+      "command": "uv",
+      "args": ["run", "--directory", "/Users/ilyaraguzov/Code/hh-mcp-server", "hh-mcp-server"]
     }
   }
 }
