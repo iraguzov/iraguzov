@@ -31,3 +31,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# personal: job-search notes and HH/LinkedIn logs
+/hh-already-applied/
+/linkedin-*.md
